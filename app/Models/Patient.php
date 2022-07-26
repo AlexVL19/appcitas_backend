@@ -18,6 +18,7 @@ class Patient extends Model
         apellido2,
         tel1,
         tel2,
+        correo,
         direccion,
         tipo_sangre,
         fecha_nac,

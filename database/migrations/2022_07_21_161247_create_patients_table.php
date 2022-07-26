@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('apellido2')->nullable();
             $table->bigInteger('tel1');
             $table->bigInteger('tel2')->nullable();
+            $table->string('correo')->nullable();
             $table->string('direccion');
             $table->string('tipo_sangre');
             $table->date('fecha_nac');

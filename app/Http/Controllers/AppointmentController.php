@@ -21,4 +21,9 @@ class AppointmentController extends Controller
         return DB::connection()->select(DB::raw($query), [$id]);
     }
 
+    public function checkAppointments($id) {
+        $query = "SELECT * FROM appointments WHERE id_paciente = ?";
+
+        return DB::connection()->select(DB::raw($query), [$id]);
+    }
 }

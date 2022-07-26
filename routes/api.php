@@ -33,3 +33,5 @@ Route::put('/editPatient/{id}', [PatientController::class, 'editPatients']);
 Route::post('/addAppoint', [AppointmentController::class, 'addAppointment']);
 
 Route::put('/deleteAppoint/{id}', [AppointmentController::class, 'deleteAppointment']);
+
+Route::get('/checkAppoints/{id}', [AppointmentController::class, 'checkAppointments']);
