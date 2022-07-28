@@ -22,7 +22,7 @@ class AppointmentController extends Controller
     }
 
     public function checkAppointments($id) {
-        $query = "SELECT * FROM appointments WHERE id_paciente = ?";
+        $query = "SELECT * FROM appointments WHERE id_paciente = ? AND status = 1";
 
         return DB::connection()->select(DB::raw($query), [$id]);
     }
