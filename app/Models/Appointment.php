@@ -14,6 +14,7 @@ class Appointment extends Model
         historial,
         motivo,
         fecha_cita,
-        hora_cita
+        hora_cita,
+        tipo
     ];
 }

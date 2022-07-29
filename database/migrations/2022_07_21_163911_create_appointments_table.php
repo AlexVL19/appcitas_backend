@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('motivo');
             $table->date('fecha_cita');
             $table->time('hora_cita');
+            $table->string('tipo');
             $table->integer('status')->default(1);
             $table->timestamps();
         });
