@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\DB;
 class AppointmentController extends Controller
 {
     public function addAppointment(Request $request) {
-        $query = "INSERT INTO appointments(id_paciente, historial, motivo, fecha_cita, hora_cita, tipo)
-        VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO appointments(id_paciente, historial, motivo, fecha_cita, hora_cita, tipo, especificacion)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         return DB::connection()->select(DB::raw($query), [$request->id_paciente, $request->historial,
-        $request->motivo, $request->fecha_cita, $request->hora_cita, $request->tipo]);
+        $request->motivo, $request->fecha_cita, $request->hora_cita, $request->tipo, $request->especificacion]);
     }
 
     public function deleteAppointment($id) {

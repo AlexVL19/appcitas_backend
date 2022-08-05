@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('fecha_cita');
             $table->time('hora_cita');
             $table->string('tipo');
+            $table->string('especificacion')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
