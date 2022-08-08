@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\DB;
 class AppointmentController extends Controller
 {
     public function addAppointment(Request $request) {
+
+        $fields = $request->validate([
+            id_paciente => 'required|integer',
+            historial => 'required',
+            motivo => 'required|string',
+            fecha_cita => 'required|date',
+            hora_cita => 'required',
+            tipo => 'required|string',
+            especificacion => 'string|nullable'
+        ]);
+
         $query = "INSERT INTO appointments(id_paciente, historial, motivo, fecha_cita, hora_cita, tipo, especificacion)
         VALUES (?, ?, ?, ?, ?, ?, ?)";
 

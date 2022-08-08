@@ -16,6 +16,24 @@ class PatientController extends Controller
 
 
     public function addPatients(Request $request) {
+
+        $fields = $request->validate([
+            tipo_documento => 'required|string',
+            documento => 'required|integer|unique:patients,documento',
+            nombre1 => 'required|string',
+            nombre2 => 'string|nullable',
+            apellido1 => 'required|string',
+            apellido2 => 'string|nullable',
+            tel1 => 'required|integer',
+            tel2 => 'integer|nullable',
+            correo => 'required|string',
+            direccion => 'required|string',
+            tipo_sangre => 'required|string',
+            fecha_nac => 'required|date',
+            edad => 'required|integer',
+            eps => 'required|string'
+        ]);
+
         $query = "INSERT INTO patients
         (tipo_documento, documento, nombre1, nombre2, apellido1, apellido2, tel1, tel2, correo, direccion,
         tipo_sangre, fecha_nac, edad, eps)
