@@ -7,16 +7,17 @@ use Illuminate\Support\Facades\DB;
 
 class AppointmentController extends Controller
 {
+    //Añade una citación a la tabla, con una validación adicional
     public function addAppointment(Request $request) {
 
         $fields = $request->validate([
-            id_paciente => 'required|integer',
-            historial => 'required',
-            motivo => 'required|string',
-            fecha_cita => 'required|date',
-            hora_cita => 'required',
-            tipo => 'required|string',
-            especificacion => 'string|nullable'
+            'id_paciente' => 'required|integer',
+            'historial' => 'required',
+            'motivo' => 'required|string',
+            'fecha_cita' => 'required|date',
+            'hora_cita' => 'required',
+            'tipo' => 'required|string',
+            'especificacion' => 'string|nullable'
         ]);
 
         $query = "INSERT INTO appointments(id_paciente, historial, motivo, fecha_cita, hora_cita, tipo, especificacion)
@@ -26,12 +27,14 @@ class AppointmentController extends Controller
         $request->motivo, $request->fecha_cita, $request->hora_cita, $request->tipo, $request->especificacion]);
     }
 
+    //Borra una citación de la tabla, cambiando su estado de 1 a 0, indicando que ya se terminó esa citación
     public function deleteAppointment($id) {
         $query = "UPDATE appointments SET status = 0 WHERE id = ?";
 
         return DB::connection()->select(DB::raw($query), [$id]);
     }
 
+    //Permite traer todas las citaciones en función del identificador del paciente
     public function checkAppointments($id) {
         $query = "SELECT * FROM appointments WHERE id_paciente = ? AND status = 1";
 

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,7 @@ Route::post('/addAppoint', [AppointmentController::class, 'addAppointment']);
 Route::put('/deleteAppoint/{id}', [AppointmentController::class, 'deleteAppointment']);
 
 Route::get('/checkAppoints/{id}', [AppointmentController::class, 'checkAppointments']);
+
+/* --------------------------------------------------------------------------- */
+
+Route::get('/getHours', [ConfigController::class, 'showConfig']);
