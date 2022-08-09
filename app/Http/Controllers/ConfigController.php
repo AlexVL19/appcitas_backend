@@ -8,7 +8,7 @@ use App\Models\Config;
 
 class ConfigController extends Controller
 {
-    //Selecciona todas las configuraciones existentes.
+    //Selecciona todas las configuraciones existentes. Devuelve la consulta exitosa.
     public function showConfig() {
         $query = "SELECT * FROM configs";
 

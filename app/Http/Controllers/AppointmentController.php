@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class AppointmentController extends Controller
 {
-    //Añade una citación a la tabla, con una validación adicional
+    /* Añade una citación a la tabla, con el formulario que se trae desde el frontend; se valida y posteriormente
+     * se hace una consulta con ese objeto. Después de ello trae una conexión exitosa o un error. */
     public function addAppointment(Request $request) {
 
         $fields = $request->validate([
@@ -34,7 +35,8 @@ class AppointmentController extends Controller
         return DB::connection()->select(DB::raw($query), [$id]);
     }
 
-    //Permite traer todas las citaciones en función del identificador del paciente
+    /* Permite traer todas las citaciones en función del ID del paciente y su estado actual, trayendo como resultado
+     * Las citaciones que todavía están vigentes. */
     public function checkAppointments($id) {
         $query = "SELECT * FROM appointments WHERE id_paciente = ? AND status = 1";
 

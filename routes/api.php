@@ -21,21 +21,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/patients', [PatientController::class, 'showPatients']);
+Route::controller(PatientController::class)->group(function () {
 
-Route::post('/addPatient', [PatientController::class, 'addPatients']);
+    Route::get('/patients','showPatients');
 
-Route::put('/deletePatient/{id}', [PatientController::class, 'deletePatients']);
+    Route::post('/addPatient', 'addPatients');
 
-Route::put('/editPatient/{id}', [PatientController::class, 'editPatients']);
+    Route::put('/deletePatient/{id}', 'deletePatients');
+
+    Route::put('/editPatient/{id}', 'editPatients');
+});
 
 /* --------------------------------------------------------------------------- */
 
-Route::post('/addAppoint', [AppointmentController::class, 'addAppointment']);
+Route::controller(AppointmentController::class)->group(function () {
+    
+    Route::post('/addAppoint', 'addAppointment');
 
-Route::put('/deleteAppoint/{id}', [AppointmentController::class, 'deleteAppointment']);
+    Route::put('/deleteAppoint/{id}', 'deleteAppointment');
 
-Route::get('/checkAppoints/{id}', [AppointmentController::class, 'checkAppointments']);
+    Route::get('/checkAppoints/{id}', 'checkAppointments');
+});
 
 /* --------------------------------------------------------------------------- */
 
