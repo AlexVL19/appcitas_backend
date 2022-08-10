@@ -21,18 +21,18 @@ class PatientController extends Controller
 
         $fields = $request->validate([
             'tipo_documento' => 'required|string',
-            'documento' => 'required|integer|unique:patients,documento',
+            'documento' => 'required|regex:/^[0-9\s]*$/|unique:patients,documento',
             'nombre1' => 'required|string',
             'nombre2' => 'string|nullable',
             'apellido1' => 'required|string',
             'apellido2' => 'string|nullable',
-            'tel1' => 'required|integer',
-            'tel2' => 'integer|nullable',
+            'tel1' => 'required|regex:/^[0-9\s]*$/',
+            'tel2' => 'nullable|regex:/^[0-9\s]*$/',
             'correo' => 'required|string',
             'direccion' => 'required|string',
             'tipo_sangre' => 'required|string',
             'fecha_nac' => 'required|date',
-            'edad' => 'required|integer',
+            'edad' => 'required|regex:/^[0-9\s]*$/',
             'eps' => 'required|string'
         ]);
 
@@ -64,13 +64,13 @@ class PatientController extends Controller
             'nombre2' => 'string|nullable',
             'apellido1' => 'required|string',
             'apellido2' => 'string|nullable',
-            'tel1' => 'required|integer',
-            'tel2' => 'integer|nullable',
+            'tel1' => 'required|regex:/^[0-9\s]*$/',
+            'tel2' => 'nullable|regex:/^[0-9\s]*$/',
             'correo' => 'required|string',
             'direccion' => 'required|string',
             'tipo_sangre' => 'required|string',
             'fecha_nac' => 'required|date',
-            'edad' => 'required|integer',
+            'edad' => 'required|regex:/^[0-9\s]*$/',
             'eps' => 'required|string'
         ]);
 
